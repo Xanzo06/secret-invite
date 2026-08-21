@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Внеплановый подход</title>
+  <meta name="description" content="Одно персональное приглашение. Без берпи.">
+  <style>
+    :root{--ink:#161616;--paper:#f4f0e8;--acid:#c7ff35;--orange:#ff5c35;--muted:#77736c}
+    *{box-sizing:border-box}html,body{min-height:100%}body{margin:0;background:var(--ink);color:var(--ink);font-family:Arial,sans-serif}
+    button,a,input{font:inherit}.page{position:relative;min-height:100vh;min-height:100svh;overflow:hidden;display:grid;place-items:center;padding:28px 18px 66px;background:radial-gradient(circle at 50% 30%,#333 0,#181818 45%,#0d0d0d 100%)}
+    .orb{position:absolute;border-radius:50%}.one{width:240px;height:240px;background:var(--acid);top:-110px;right:-80px}.two{width:160px;height:160px;border:28px solid var(--orange);bottom:-70px;left:-65px}
+    .card{position:relative;width:min(100%,460px);min-height:590px;padding:26px;background:var(--paper);border-radius:4px 38px 4px 4px;box-shadow:0 28px 90px #0008;transform:rotate(-1deg)}
+    .card:after{content:"";position:absolute;inset:9px;border:1px solid #16161622;border-radius:2px 30px 2px 2px;pointer-events:none}
+    .eyebrow{position:relative;z-index:1;display:flex;gap:9px;align-items:center;padding-bottom:18px;border-bottom:1px solid #bbb7ae;font-size:10px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.eyebrow b{color:var(--orange);font-size:14px}
+    .screen{position:relative;z-index:1;min-height:505px;display:flex;flex-direction:column;padding-top:38px;animation:up .4s ease}.hidden{display:none}.tiny{margin:0 0 12px;color:#6d6a64;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase}
+    h1{margin:0;font-family:Arial Black,Arial,sans-serif;font-size:clamp(42px,12vw,60px);line-height:.92;letter-spacing:-.055em;text-transform:uppercase}h1 em{color:var(--orange);font-style:normal}.details h1{font-size:clamp(35px,10vw,50px)}
+    .lead{margin:24px 0;font-size:16px;line-height:1.5;color:#3e3c38}.details .lead{margin:15px 0;font-size:14px}
+    .primary{margin-top:auto;min-height:58px;display:flex;align-items:center;justify-content:space-between;width:100%;padding:0 20px;border:0;border-radius:2px 18px 2px 2px;background:var(--ink);color:#fff;font-weight:800;cursor:pointer}.primary span{color:var(--acid);font-size:25px}.primary:disabled{opacity:.38;cursor:not-allowed}
+    .fine{margin:13px 4px 0;color:var(--muted);font-size:10px;line-height:1.45;text-align:center}.fine.ok{color:#315600;font-weight:800}
+    fieldset{margin:0;padding:0;border:0}legend,.date label span{display:block;margin-bottom:8px;color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.1em;text-transform:uppercase}.choices{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.choices label{display:grid;place-items:center;min-height:54px;padding:7px 5px;border:1px solid #c7c2b8;border-radius:3px 11px 3px 3px;font-size:11px;line-height:1.25;font-weight:800;text-align:center;cursor:pointer}.choices label.on{border-color:var(--ink);background:var(--acid);box-shadow:3px 3px 0 var(--ink);transform:translate(-2px,-2px)}.choices input{position:absolute;opacity:0}
+    .date{display:grid;grid-template-columns:1.35fr 1fr;gap:9px;margin-top:15px}.date label span{margin-bottom:6px}.date input{width:100%;min-height:44px;padding:8px 10px;border:1px solid #c7c2b8;border-radius:3px;background:#fffdf8;color:var(--ink);font-weight:700;color-scheme:light}.error{margin:8px 0 0;padding:7px 9px;background:#ffded6;color:#8f260d;font-size:10px;font-weight:800}
+    footer{position:absolute;z-index:2;bottom:18px;width:min(calc(100% - 36px),460px);display:flex;gap:10px;align-items:center;color:#888;font-size:9px;font-weight:700;letter-spacing:.14em}footer i{flex:1;height:1px;background:#555}
+    @keyframes up{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}@media(max-height:720px){.card{min-height:550px}.screen{min-height:465px;padding-top:25px}h1{font-size:42px}}
+  </style>
+</head>
+<body>
+<main class="page"><div class="orb one"></div><div class="orb two"></div>
+  <section class="card"><div class="eyebrow"><b>●</b> Персональное приглашение</div>
+    <div class="screen intro" id="intro"><p class="tiny">Это не реклама протеина.</p><h1>Внеплановый<br><em>подход</em></h1><p class="lead">Нажми, если готова узнать, зачем тебе тайно передали эту ссылку.</p><button class="primary" id="reveal">Рискнуть и открыть <span>↗</span></button><p class="fine">Спойлер: никаких берпи.</p></div>
+    <div class="screen details hidden" id="details"><p class="tiny">Предложение от Димы</p><h1>Сменим<br><em>локацию?</em></h1><p class="lead">Кофе, прогулка или что-нибудь вкусное — без гантелей, свидетелей и соревнования за тренажёр.</p>
+      <fieldset><legend>Что выбираешь?</legend><div class="choices">
+        <label><input type="radio" name="activity" value="☕ Кофе">☕ Кофе</label><label><input type="radio" name="activity" value="🌿 Прогулка">🌿 Прогулка</label><label><input type="radio" name="activity" value="🍰 Что-то вкусное">🍰 Что-то вкусное</label>
+      </div></fieldset>
+      <div class="date"><label><span>Дата</span><input id="date" type="date"></label><label><span>Время</span><input id="time" type="time"></label></div><p class="error hidden" id="error">29 августа занято — выбери любой другой день 🙂</p>
+      <button class="primary" id="send" disabled>Открыть чат с Димой <span>↗</span></button><p class="fine" id="hint">Telegram откроется напрямую, а ответ на всякий случай скопируется.</p>
+    </div>
+  </section><footer><span>01</span><i></i><span>НЕ ДЛЯ ОБЩЕГО ЧАТА</span></footer>
+</main>
+<script>
+  const intro=document.querySelector('#intro'),details=document.querySelector('#details'),date=document.querySelector('#date'),time=document.querySelector('#time'),send=document.querySelector('#send'),error=document.querySelector('#error'),hint=document.querySelector('#hint');let activity='';
+  const today=new Date();date.min=[today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-');
+  document.querySelector('#reveal').onclick=()=>{intro.classList.add('hidden');details.classList.remove('hidden')};
+  document.querySelectorAll('[name=activity]').forEach(r=>r.onchange=()=>{activity=r.value;document.querySelectorAll('.choices label').forEach(x=>x.classList.remove('on'));r.parentElement.classList.add('on');check()});
+  date.onchange=time.onchange=check;function check(){const blocked=date.value==='2026-08-29';error.classList.toggle('hidden',!blocked);send.disabled=!(activity&&date.value&&time.value&&!blocked)}
+  send.onclick=async()=>{const d=new Date(date.value+'T12:00:00').toLocaleDateString('ru-RU',{day:'numeric',month:'long'});const msg=`Привет, Дима! Выбираю: ${activity}. Дата: ${d}, время: ${time.value}. Го 🙂`;try{await navigator.clipboard.writeText(msg);hint.textContent='Ответ скопирован! Если текст не появился — просто вставь его в чат.';hint.classList.add('ok')}catch(e){}location.href='tg://resolve?domain=ju2jzpe&text='+encodeURIComponent(msg);setTimeout(()=>{if(document.visibilityState==='visible')location.href='https://t.me/ju2jzpe'},1400)};
+</script>
+</body></html>
